@@ -14,7 +14,7 @@
 		DB8811122AE4108700DA373C /* AuthViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8811112AE4108700DA373C /* AuthViewModal.swift */; };
 		DB8811142AE4124300DA373C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB8811132AE4124300DA373C /* GoogleService-Info.plist */; };
 		DB88111F2AE4181100DA373C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88111E2AE4181100DA373C /* User.swift */; };
-		DBCF0D952AF7F3B200258E54 /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = DBCF0D942AF7F3B200258E54 /* Poppins */; };
+		DBCF0D952AF7F3B200258E54 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = DBCF0D942AF7F3B200258E54 /* Fonts */; };
 		DBD0369D2AF29FD400D2905E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD0369C2AF29FD400D2905E /* LoginView.swift */; };
 		DBD0369F2AF2A61900D2905E /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD0369E2AF2A61900D2905E /* TaskView.swift */; };
 		DBD036A12AF2AA7C00D2905E /* RadialLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD036A02AF2AA7C00D2905E /* RadialLayoutView.swift */; };
@@ -57,7 +57,7 @@
 		DB8811112AE4108700DA373C /* AuthViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModal.swift; sourceTree = "<group>"; };
 		DB8811132AE4124300DA373C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB88111E2AE4181100DA373C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DBCF0D942AF7F3B200258E54 /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
+		DBCF0D942AF7F3B200258E54 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		DBCF0D962AF7F44600258E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DBD0369C2AF29FD400D2905E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DBD0369E2AF2A61900D2905E /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				DBCF0D962AF7F44600258E54 /* Info.plist */,
-				DBCF0D942AF7F3B200258E54 /* Poppins */,
+				DBCF0D942AF7F3B200258E54 /* Fonts */,
 				DBD0369A2AF29F7A00D2905E /* App */,
 				DBD036992AF29F4700D2905E /* Root */,
 				DB88111C2AE417F500DA373C /* Model */,
@@ -285,7 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBCF0D952AF7F3B200258E54 /* Poppins in Resources */,
+				DBCF0D952AF7F3B200258E54 /* Fonts in Resources */,
 				DB3862862ADFEEDF005E6800 /* Preview Assets.xcassets in Resources */,
 				DB3862832ADFEEDF005E6800 /* Assets.xcassets in Resources */,
 				DB8811142AE4124300DA373C /* GoogleService-Info.plist in Resources */,

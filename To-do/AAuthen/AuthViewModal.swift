@@ -26,12 +26,13 @@ class AuthViewModel: ObservableObject {
     
     func signIn( withEmail email: String, password: String) async throws {
         do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            self.userSession = result.user
-            print(result.user.uid)
-        } catch {
-            print(error)
-        }
+              let result = try await Auth.auth().signIn(withEmail: email, password: password)
+              self.userSession = result.user
+              print(result.user.uid)
+          } catch let error as NSError {
+              print(error.localizedDescription)
+              throw error
+          }
       
         
     }
@@ -60,12 +61,16 @@ class AuthViewModel: ObservableObject {
             
             
             print(result.user.uid)
-        } catch {
-            print("failed to create user")
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            throw error
         }
     }
     
-    func fectUser( withEmail email: String, password: String ) async throws {}
+    func fectUser( ) async throws  -> User? {
+        return currentUser
+    }
+        
     
     func addToDoItem(_ toDoItem: ToDoItem) async throws {
         guard let userId = userSession?.uid else {

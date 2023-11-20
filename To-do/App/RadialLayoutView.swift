@@ -9,7 +9,7 @@ struct ClockView: View {
     var body: some View {
             ZStack {
                 Circle()
-                    .fill(Color("Color 3"))
+                    .fill(Color("GrayCustom"))
             
                     .frame(width: width / 3 ,  height: width / 3)
                 
@@ -49,7 +49,7 @@ struct ClockView: View {
                     .frame(width: 10,height: 10)
                 
         }
-            .shadow(color: Color("task"), radius: 10)
+            .shadow(color: Color("TaskBackgroundColor"), radius: 10)
            
         .onReceive(timer) { _ in
             let calendar = Calendar.current

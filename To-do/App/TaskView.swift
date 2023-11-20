@@ -10,36 +10,36 @@ import SwiftUI
 struct TaskView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @State var toDoItems: [ToDoItem] = []
+    //determines whether the item adding UI is shown.
     @State private var isAddingItem = false
    
     var body: some View {
         VStack {
-            ZStack {
-                Rectangle().frame(width: .infinity).foregroundColor(Color("task").opacity(0.67))
+            ZStack() {
+                Rectangle()
+                    .edgesIgnoringSafeArea(.top)
+                    .foregroundColor(Color("TaskBackgroundColor").opacity(0.67))
                     .ignoresSafeArea()
                 VStack{
                     Spacer()
                     ZStack {
                         Circle()
                             .stroke(lineWidth: 3)
-                            .fill(Color("Color 2"))
+                            .fill(Color(.red).opacity(0.4))
                             .frame(width: 90, height: 90)
-                    
-                        Image("istockphoto-1325013514-612x612")
-                                           .resizable()
-                                           .scaledToFill()
-                                           .frame(width: 80, height: 80)
-                                           .clipShape(Circle())
-                    } .padding(.top, 60)
                         
+                        Image("avatar")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
+                    } .padding(.top, 60)
                     
-                    Text("Huynh Long")
+                    
+                    Text(authViewModel.currentUser?.email ?? "hello")
                         .font(Font.custom("Poppins-Medium", size: 14))
                         .padding(.top, 6)
-                    
-                    Text("@huynhlong")
-                        .foregroundStyle(Color("Color 2"))
-                        .font(Font.custom("Poppins-Medium", size: 10))
+                
                     Button(action: {
                         
                         authViewModel.Logout()
@@ -47,12 +47,12 @@ struct TaskView: View {
                     }){
                         ZStack {
                             RoundedRectangle(cornerRadius: 50)
-                                .fill(Color("n"))
+                                .fill(Color("TaskBackgroundColor"))
                                 .frame(width: 89, height: 22)
                             Text("Logout")
                                 .font(Font.custom("Poppins-Medium", size: 10))
                                 .foregroundColor(Color.black)
-                                
+                            
                         }
                         .padding(.top, 10)
                         
@@ -61,14 +61,11 @@ struct TaskView: View {
                     
                 }
                 
-            }.frame(height: UIScreen.main.bounds.height * 0.32)
+            }
                 .padding(.top,100)
-            
-            Spacer()
-            
-            ZStack {
                 
-                Rectangle().frame(width: .infinity).foregroundColor(.white)
+            Spacer()
+            ZStack {
                 
                 VStack{
                    ClockView()
@@ -95,12 +92,12 @@ struct TaskView: View {
                             Button(action: {
                                 
                                 isAddingItem = true
-                                print("add")
+                
                                  
                             }){
                                Image(systemName: "plus.circle")
                                     .font(.title)
-                                    .foregroundColor(Color("task"))
+                                    .foregroundColor(Color("TaskBackgroundColor"))
                                     
                             }.sheet(isPresented: $isAddingItem) {
                                 AddNewItemView(isAddingItem: $isAddingItem, toDoItems: $toDoItems)
@@ -111,7 +108,7 @@ struct TaskView: View {
                                         ForEach(toDoItems.indices, id: \.self) { index in
                                             HStack {
                                                 Toggle("", isOn: $toDoItems[index].isDone)
-                                                    .labelsHidden()
+                                                    .labelsHidden() 
                                                     .toggleStyle(CheckBoxStyle())
                                                 Text(toDoItems[index].title)
                                                     .font(Font.custom("Poppins-Regular",size: 15))
@@ -138,10 +135,13 @@ struct TaskView: View {
                 
                 
             }
-        }.onAppear {
+        }
+        // When the view appears, fetch the user's to-do items from the backend.
+        .onAppear {
             Task {
                 do {
                     toDoItems = try await authViewModel.fetchToDoItems()
+                   
                 } catch {
                     print("Failed to fetch to-do items: \(error)")
                 }
@@ -185,7 +185,7 @@ struct TaskView: View {
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color("task"))
+                        .background(Color("TaskBackgroundColor"))
                         .cornerRadius(10)
                 }
                 .padding()
@@ -195,10 +195,12 @@ struct TaskView: View {
     
 }
 
-#Preview {
-    TaskView()
-}
 
+
+
+
+
+//custom toggle style
 struct CheckBoxStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         Button {
@@ -209,7 +211,7 @@ struct CheckBoxStyle: ToggleStyle {
                     .foregroundColor( .black)
             } else {
                 Image( systemName: "circle.fill")
-                    .foregroundColor( Color("task"))
+                    .foregroundColor( Color("TaskBackgroundColor"))
                
             }
         }
