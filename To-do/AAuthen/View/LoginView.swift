@@ -36,119 +36,126 @@ struct LoginView: View {
                    }
     }
     var SignView : some View {
-        VStack {
+        ScrollView  {
             VStack {
-                Text("Hello")
-                    .font(.system(size: 60))
-                    .foregroundColor(Color.black)
-                    .bold()
-                Text("Sign in to your account")
-                    .font(.title3)
-                    .foregroundColor(Color.black.opacity(0.8))
-                    .padding(.top, -20)
-            }
-                .padding(.top, 100)
-       
-            VStack{
-                HStack {
-                    Image(systemName: "person.fill")
-                        .foregroundColor(Color.gray.opacity(0.6))
-                        .padding()
-                    
-                    TextField("User Name", text: $username )
-                        .padding(.leading, -10)
-                }
-                    .frame(width: 300, height: 60)
-                    .background(Color.white)
-                    .cornerRadius(30)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke()
-                            .foregroundStyle( Color.black.opacity(0.1)
-                                            )
-                    )
-                    .shadow(color: .black.opacity(0.1), radius: 10, x: 5, y: 10)
-                HStack {
-                    Image(systemName: "exclamationmark.lock.fill")
-                        .foregroundColor(Color.gray.opacity(0.6))
-                        .padding()
-                    SecureField("Password", text: $pass )
-                        .padding(.leading, -10)
-                    
-                }
-                    .frame(width: 300, height: 60)
-                    .background(Color.white)
-                    .cornerRadius(30)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke()
-                            .foregroundStyle( Color.black.opacity(0.1)
-                                            )
-                    )
-                    .shadow(color: .black.opacity(0.1), radius: 10, x: 5, y: 10)
-                    .padding(.top,40)
-                
-                Text("Forgot your password?")
-                    .font(.system(size: 15))
-                    .foregroundColor(Color.black.opacity(0.5))
-                    .padding(.trailing, -120)
-                    .padding(.top, 20)
-                HStack {
-                    Text("Sign in")
-                        .font(.system(size: 30))
+                VStack {
+                    Text("Hello")
+                        .font(.system(size: 60))
                         .foregroundColor(Color.black)
-                    .bold()
-                    
-                    Button {
-                        Task {
-                            do {
-                                     
-                                  try await viewModel.signIn(withEmail: username, password: pass)
-                        } catch {
-                                   errorMessage = error.localizedDescription
-                                   showError = true
-
-                               }
-                          }
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 30)
-                                .frame(width: 60, height: 40)
-                            .foregroundStyle(.linearGradient(colors: [Color("PurpleCustom").opacity(0.4),Color("BlueCustom").opacity(0.8) ], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            Image(systemName: "arrow.forward")
-                                .foregroundColor(Color.white)
-                                .padding()
-                            
-                        }
-                      
-                    }
-                    
-               
-                        
-                    
+                        .bold()
+                    Text("Sign in to your account")
+                        .font(.title3)
+                        .foregroundColor(Color.black.opacity(0.8))
+                        .padding(.top, -20)
                 }
-                            .padding(.trailing, -120)
-                            .padding(.top, 100)
-                            .ignoresSafeArea(.keyboard)
-             
-               
+                    .padding(.top, 100)
+           
+                VStack{
+                    HStack {
+                        Image(systemName: "person.fill")
+                            .foregroundColor(Color.gray.opacity(0.6))
+                            .padding()
+                        
+                        TextField("User Name", text: $username )
+                            .padding(.leading, -10)
+                    }
+                        .frame(width: 300, height: 60)
+                        .background(Color.white)
+                        .cornerRadius(30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke()
+                                .foregroundStyle( Color.black.opacity(0.1)
+                                                )
+                        )
+                        .shadow(color: .black.opacity(0.1), radius: 10, x: 5, y: 5)
+                    HStack {
+                        Image(systemName: "exclamationmark.lock.fill")
+                            .foregroundColor(Color.gray.opacity(0.6))
+                            .padding()
+                        SecureField("Password", text: $pass )
+                            .padding(.leading, -10)
+                        
+                    }
+                        .frame(width: 300, height: 60)
+                        .background(Color.white)
+                        .cornerRadius(30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke()
+                                .foregroundStyle( Color.black.opacity(0.1)
+                                                )
+                        )
+                        .shadow(color: .black.opacity(0.1), radius: 10, x: 5, y: 5)
+                        .padding(.top,40)
+                    
+                    Text("Forgot your password?")
+                        .font(.system(size: 15))
+                        .foregroundColor(Color.black.opacity(0.5))
+                        .padding(.trailing, -120)
+                        .padding(.top, 20)
+                    HStack {
+                        Text("Sign in")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.black)
+                        .bold()
+                        
+                        Button {
+                            Task {
+                                do {
+                                         
+                                      try await viewModel.signIn(withEmail: username, password: pass)
+                            } catch {
+                                       errorMessage = error.localizedDescription
+                                       showError = true
+
+                                   }
+                              }
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 30)
+                                    .frame(width: 60, height: 40)
+                                .foregroundStyle(.linearGradient(colors: [Color("PurpleCustom").opacity(0.4),Color("BlueCustom").opacity(0.8) ], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                Image(systemName: "arrow.forward")
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                                
+                            }
+                          
+                        }
+                        
+                   
+                            
+                        
+                    }
+                                .padding(.trailing, -120)
+                                .padding(.top, 100)
+                             
+                 
+                   
+                    
+                } .gesture(TapGesture().onEnded{
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                  to:nil, from:nil, for:nil)
+                  })
+              
+                Spacer()
                 
+                HStack {
+                    Text("Don’t have an account?")
+                    Button(action: {
+                        isCreateButtonClicked.toggle()
+                                   }) {
+                                       Text("Create").underline()
+                                   }
+                }.font(.system(size: 17))
+                    .foregroundColor(Color.black)
+                .padding(.bottom,50)
+              
             }
-          
-            Spacer()
-            
-            HStack {
-                Text("Don’t have an account?")
-                Button(action: {
-                    isCreateButtonClicked.toggle()
-                               }) {
-                                   Text("Create").underline()
-                               }
-            }.font(.system(size: 17))
-                .foregroundColor(Color.black)
-            .padding(.bottom,50)
-          
-        }
+        }.scrollIndicators(.hidden)
+        
+        
         
     }
 
